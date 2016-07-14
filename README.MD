@@ -17,3 +17,5 @@ npm install
 npm run dev
 ```
 执行后编译后的es5代码将生成在build/dev文件夹下
+
+编译完后打开index.html文件
