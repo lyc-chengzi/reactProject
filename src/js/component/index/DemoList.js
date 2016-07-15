@@ -3,13 +3,13 @@
  */
 var DemoList = React.createClass({
     demoList: [{
-        "url": "src/page/demo1.html",
+        "url": "src/pages/demo1.html",
         "text": "demo1 - 基本用法"
     }, {
-        "url": "src/page/demo2.html",
+        "url": "src/pages/demo2.html",
         "text": "demo2 - 创建组件"
     }, {
-        "url": "src/page/demo3.html",
+        "url": "src/pages/demo3.html",
         "text": "demo3 - 绑定事件"
     }],
     render: function () {
