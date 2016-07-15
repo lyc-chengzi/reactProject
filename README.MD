@@ -1,4 +1,9 @@
 #作为学习reactjs的一个示例项目
+```
+master 分支使用es6语法实现demo
+
+parallel-es5 分支使用es5语法实现demo
+```
 
 ###项目使用es6 & babel & reactjs
 
