@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo1 - 数据搜索实例</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/react.js"></script>
+    <script src="../../js/react-dom.js"></script>
+
+    <script src="../../build/dev/component/FilterableProductTable/ProductRow.js"></script>
+    <script src="../../build/dev/component/FilterableProductTable/ProductCategoryRow.js"></script>
+    <script src="../../build/dev/component/FilterableProductTable/ProductTable.js"></script>
+    <script src="../../build/dev/component/FilterableProductTable/SearchBar.js"></script>
+    <script src="../../build/dev/component/FilterableProductTable/FilterableProductTable.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a style="font-size:20px;" href="javascript:history.back();"> back </a>
+        <div class="row">
+            <h3 style="text-align: center;">demo1 - FilterableProductTable - 产品过滤表格</h3>
+        </div>
+        <div class="row" id="demo_list">
+
+        </div>
+    </div>
+    <script>
+        ReactDOM.render(React.createElement(FilterableProductTable, null), document.getElementById('demo_list'));
+    </script>
+</body>
+</html>
