@@ -1,5 +1,8 @@
-var ProductRow = React.createClass({
-    render:function(){
+class ProductRow extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
         //如果没有库存，名字显示为红色
         var name = this.props.product.stocked
             ? this.props.product.name
@@ -11,4 +14,4 @@ var ProductRow = React.createClass({
              </tr>
          );
     }
-});
+}

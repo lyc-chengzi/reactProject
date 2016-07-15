@@ -1,21 +1,24 @@
-var FilterableProductTable = React.createClass({
-    render: function () {
+class FilterableProductTable extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            data: [],
+            filterName: '',
+            onlyStock: false
+        };
+        this.handleSearchChange = this.handleSearchChange.bind(this);
+    }
+    render () {
         return (
             <div>
                 <SearchBar filterName={this.state.filterName} onlyStock={this.state.onlyStock} onSearchChange={this.handleSearchChange}/>
                 <ProductTable products={this.state.data} filterName={this.state.filterName} onlyStock={this.state.onlyStock}/>
             </div>
         );
-    },
-    getInitialState: function () {
-        return {
-            data: [],
-            filterName: '',
-            onlyStock: false
-        };
-    },
+    }
+
     //组件显示后(生命周期中的方法)
-    componentDidMount: function () {
+    componentDidMount () {
         var defaultData = [
             {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
             {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
@@ -27,18 +30,18 @@ var FilterableProductTable = React.createClass({
         setTimeout(function () {
             this.setState({data: defaultData});
         }.bind(this), 2000);
-    },
+    }
     //当搜索框变化时的处理函数
-    handleSearchChange:function(filterName, onlyStock){
+    handleSearchChange(filterName, onlyStock){
         this.setState({
             filterName: filterName,
             onlyStock: onlyStock
         });
-    },
-    addOneProduct: function () {
+    }
+    addOneProduct () {
         var oldData = this.state.data;
         var newData = {category: "Electronics", price: "$123", stocked: true, name: (new Date) - 0};
         oldData.push(newData);
         this.setState({data: oldData});
     }
-});
+}
