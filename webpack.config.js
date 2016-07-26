@@ -3,9 +3,11 @@
  */
 var webpack = require('webpack');
 var path = require('path');
-const app_src = path.join(__dirname, './src') ;
+const app_src = path.join(__dirname, './src');
+
 module.exports = {
     entry: {
+        vendor: ["react", 'react-dom'],
         homepage: [path.join(app_src, 'pages/homepage/index.js')],
         demo1: [path.join(app_src, 'pages/demo1/index.js')]
     },
@@ -51,8 +53,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.DedupePlugin()
-        //new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            filename: "vendor.js"
+        }),
+        new webpack.optimize.UglifyJsPlugin()
+
     ],
     resolve: {
         //查找module的话从这里开始查找
