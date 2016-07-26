@@ -1,4 +1,6 @@
-class SearchBar extends React.Component {
+import React from 'react';
+
+export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);

@@ -1,4 +1,8 @@
-class FilterableProductTable extends React.Component{
+import React from 'react';
+import SearchBar from './SearchBar';
+import ProductTable from './ProductTable';
+
+export default class FilterableProductTable extends React.Component{
     constructor(){
         super();
         this.state = {

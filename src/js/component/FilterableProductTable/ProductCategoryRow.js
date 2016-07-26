@@ -1,4 +1,6 @@
-class ProductCategoryRow extends React.Component{
+import React from 'react';
+
+export default class ProductCategoryRow extends React.Component{
     constructor(props){
         super(props);
     }
