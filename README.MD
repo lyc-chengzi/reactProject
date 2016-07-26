@@ -5,7 +5,7 @@ master 分支使用es6语法实现demo
 parallel-es5 分支使用es5语法实现demo
 ```
 
-###项目使用es6 & babel & reactjs
+###项目使用es6 & babel & reactjs & webpack
 
 ###源码在src文件夹下
 
@@ -21,6 +21,6 @@ npm install
 ```
 npm run dev
 ```
-执行后编译后的es5代码将生成在build/dev文件夹下
+执行后编译后的es5代码将生成在dist文件夹下
 
 编译完后打开index.html文件
