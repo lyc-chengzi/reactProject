@@ -8,12 +8,15 @@ export default class DemoList extends React.Component{
     constructor(props){
         super(props);
         this.demoList = [{
+            "id": "demo1",
             "url": "src/pages/demo1/demo1.html",
             "text": "demo1 - 基本用法"
         }, {
+            "id": "demo2",
             "url": "src/pages/demo2.html",
             "text": "demo2 - 创建组件"
         }, {
+            "id": "demo3",
             "url": "src/pages/demo3.html",
             "text": "demo3 - 绑定事件"
         }];
@@ -22,7 +25,7 @@ export default class DemoList extends React.Component{
     render() {
         var demoNode = this.demoList.map(function (demo) {
             return (
-                <Demo url={demo.url} text={demo.text}/>
+                <Demo key={demo.id} url={demo.url} text={demo.text}/>
             );
         });
         return (
