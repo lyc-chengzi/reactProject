@@ -1,10 +1,11 @@
 /**
- * Created by liuyc14 on 2016/7/26. dev环境webpack配置
+ * Created by liuyc14 on 2016/7/26.  生产环境的webpack配置
  */
 var webpack = require('webpack');
 var path = require('path');
 const app_src = path.join(__dirname, './src');
-console.log('~~~~~~~~~~~~~~~~using dev webpack config file')
+
+console.log('~~~~~~~~~~~~~~~~using production webpack config file')
 module.exports = {
     entry: {
         vendor: ["react", 'react-dom'],
@@ -53,15 +54,20 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            }
+        }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             filename: "vendor.js"
         }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-            },
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false  // remove all comments
+            }
         })
     ],
     resolve: {
@@ -74,6 +80,5 @@ module.exports = {
             //后续直接 require('FilterableProductTable') 即可
             FilterableProductTable : 'js/component/FilterableProductTable/FilterableProductTable.js'
         }
-    },
-    devtool: 'source-map'
+    }
 };
