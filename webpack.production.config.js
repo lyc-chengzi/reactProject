@@ -78,7 +78,7 @@ module.exports = {
         //模块别名定义，方便后续直接引用别名，无须多写长长的地址
         alias: {
             //后续直接 require('FilterableProductTable') 即可
-            FilterableProductTable : 'js/component/FilterableProductTable/FilterableProductTable.js'
+            FilterableProductTable : 'component/FilterableProductTable/FilterableProductTable.js'
         }
     }
 };

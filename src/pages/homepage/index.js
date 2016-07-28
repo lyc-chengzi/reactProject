@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDom from 'react-dom';
-import DemoList from '../../js/component/index/DemoList';
+import DemoList from '../../component/index/DemoList';
 
 $(function () {
     ReactDom.render(<DemoList title='demo列表'/>, document.getElementById('demo_list'));
