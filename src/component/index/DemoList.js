@@ -13,11 +13,11 @@ export default class DemoList extends React.Component{
             "text": "demo1 - 基本用法"
         }, {
             "id": "demo2",
-            "url": "src/pages/demo2.html",
-            "text": "demo2 - 创建组件"
+            "url": "src/pages/demo2/demo2.html",
+            "text": "demo2 - Flux基本使用"
         }, {
             "id": "demo3",
-            "url": "src/pages/demo3.html",
+            "url": "src/pages/demo3/demo3.html",
             "text": "demo3 - 绑定事件"
         }];
     }
