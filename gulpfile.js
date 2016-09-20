@@ -25,22 +25,7 @@ gulp.task('clean', function () {
 
 
 
-if(_env === "production") {
-    gulp.task('webpack', ['clean'], function (done) {
-        webpack(webpackConfig, function (err, stats) {
-            console.log('[webpack:build]', stats.toString({
-                colors: true
-            }));
-
-            var webpackErrors = stats.compilation.errors;
-            if (err || (webpackErrors && webpackErrors.length)) {
-                console.error(err);
-                console.error(stats.compilation.errors);
-            }
-            done();
-        });
-    });
-}else{
+if(_env === 'devServer'){
     var WebpackDevServer = require('webpack-dev-server');
     //开发环境启动 webpack-dev-server
     webpackConfig.debug = true;
@@ -83,6 +68,21 @@ if(_env === "production") {
             console.log('[webpack-dev-server] is started, and now you can visit http://localhost:' + webpackConfig.devServerPort);
         });
         done();
+    });
+} else {
+    gulp.task('webpack', ['clean'], function (done) {
+        webpack(webpackConfig, function (err, stats) {
+            console.log('[webpack:build]', stats.toString({
+                colors: true
+            }));
+
+            var webpackErrors = stats.compilation.errors;
+            if (err || (webpackErrors && webpackErrors.length)) {
+                console.error(err);
+                console.error(stats.compilation.errors);
+            }
+            done();
+        });
     });
 }
 

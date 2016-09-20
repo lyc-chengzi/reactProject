@@ -20,6 +20,7 @@ npm install
 ####3、执行命令编译源码
 ```
 npm run dev => 编译开发环境源码(未压缩)
+npm run dev-server => 启动本地服务器，访问localhost:9999
 npm start => 编译生产环境源码
 ```
 执行后编译后的es5代码将生成在dist文件夹下
