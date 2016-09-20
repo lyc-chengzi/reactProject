@@ -4,7 +4,11 @@
 var webpack = require('webpack');
 var path = require('path');
 const app_src = path.join(__dirname, './src');
-console.log('~~~~~~~~~~~~~~~~using dev webpack config file')
+var node_modules = path.resolve(__dirname,'node_modules');
+var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
+var pathToReactDom = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
+
+console.log('~~~~~~~~~~~~~~~~load basic config file');
 module.exports = {
     entry: {
         vendor: ["react", 'react-dom'],
@@ -12,8 +16,9 @@ module.exports = {
         demo1: [path.join(app_src, 'pages/demo1/index.js')]
     },
     output: {
-        path: path.resolve(__dirname,'./dist'),
-        filename: "bundle_[name].js"
+        path: path.resolve(__dirname,'dist'),
+        filename: "bundle_[name].js",
+        publicPath: '/assets/'
     },
     module: {
         loaders: [
@@ -71,8 +76,11 @@ module.exports = {
         extensions: ['', '.js', '.json', '.scss'],
         //模块别名定义，方便后续直接引用别名，无须多写长长的地址
         alias: {
+            //react和react-dom直接读取min文件，不再单独编译
+            //'react': pathToReact,
+            //'react-dom': pathToReactDom,
             //后续直接 require('FilterableProductTable') 即可
-            FilterableProductTable : 'component/FilterableProductTable/FilterableProductTable.js'
+            'FilterableProductTable' : 'component/FilterableProductTable/FilterableProductTable.js'
         }
     },
     devtool: 'source-map'
