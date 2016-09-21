@@ -19,6 +19,8 @@ const paths = {
     sourcePath: './src'
 };
 
+/*********************基础任务*********************/
+
 const task_clean = () => {
     return del([paths.buildPath + "/**/*", paths.distPath + "/**/*"]);
 };
@@ -83,18 +85,21 @@ const task_webpackDevServer = (done) => {
 };
 
 const task_watch = () => {
-    gulp.watch(paths.sourcePath+'/**/*.js', {readDelay: 2000}, ['webpack']);
+    gulp.watch(paths.sourcePath+'/**/*.js', {readDelay: 2000}, task_webpack);
 };
 
 export {task_clean, task_webpack, task_webpackDevServer, task_watch};
 
-gulp.task('webpack-dev-server', ['clean'], task_webpackDevServer);
+/*********************用户调用任务*********************/
+//默认构建任务，将源码打包到目标目录
+const task_build = gulp.parallel(task_watch, gulp.series(task_clean, task_webpack));
+export {task_build};
+export default task_build;
 
-gulp.task('webpack', ['clean'], task_webpack);
+//用于生产环境的打包
+const task_production = gulp.series(task_clean, task_webpack);
+export {task_production};
 
-gulp.task('clean', task_clean);
-
-gulp.task('watch', task_watch);
-
-gulp.task('default', ['watch', 'webpack'], ()=>{});
-gulp.task('server', ['watch', 'webpack-dev-server'], ()=>{});
+//打包项目，并启用webpack-dev-server服务器
+const task_server = gulp.series(task_clean, task_webpackDevServer);
+export {task_server};
