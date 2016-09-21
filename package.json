@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "set NODE_ENV=dev&& gulp",
-    "dev-server": "set NODE_ENV=devServer&& gulp",
-    "start": "set NODE_ENV=production&& gulp"
+    "dev": "set NODE_ENV=dev&& gulp --gulpfile gulpfile.babel.js",
+    "dev-server": "set NODE_ENV=devServer&& gulp server --gulpfile gulpfile.babel.js",
+    "start": "set NODE_ENV=production&& gulp --gulpfile gulpfile.babel.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.14.0",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-watch": "^4.3.9",
