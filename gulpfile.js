@@ -2,6 +2,7 @@
  * Created by liuyc14 on 2016/7/26.
  */
 var gulp = require("gulp");
+var gulp_watch = require('gulp-watch');
 var del = require("del");
 var webpack = require("webpack");
 var webpackConfig;
@@ -86,6 +87,10 @@ if(_env === 'devServer'){
     });
 }
 
-gulp.task('default', ['webpack'], function () {
+gulp.task('watch', function(){
+    gulp.watch(paths.sourcePath+'/**/*.js', {readDelay: 2000}, ['webpack']);
+});
+
+gulp.task('default', ['watch', 'webpack'], function () {
 
 });
