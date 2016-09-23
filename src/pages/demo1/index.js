@@ -5,4 +5,9 @@ import FilterableProductTable from 'FilterableProductTable';//webpack中指定�
 import React from 'react';
 import ReactDom from 'react-dom';
 
-ReactDom.render(<FilterableProductTable />, document.getElementById('demo_list'));
+var fbp = ReactDom.render(<FilterableProductTable />, document.getElementById('demo_list'));
+console.log(fbp);
+
+setTimeout(function(){
+    fbp.addOneProduct({category: "电脑", price: "￥3999", stocked: true, name: 'YOGA Book'});
+}, 4000);
