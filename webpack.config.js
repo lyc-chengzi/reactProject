@@ -13,7 +13,8 @@ module.exports = {
     entry: {
         vendor: ["react", 'react-dom'],
         homepage: [path.join(app_src, 'pages/homepage/index.js')],
-        demo1: [path.join(app_src, 'pages/demo1/index.js')]
+        demo1: [path.join(app_src, 'pages/demo1/index.js')],
+        demo2: [path.join(app_src, 'pages/demo2/index.js')]
     },
     output: {
         path: path.resolve(__dirname,'dist'),
