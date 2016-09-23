@@ -42,10 +42,10 @@ export default class FilterableProductTable extends React.Component{
             onlyStock: onlyStock
         });
     }
-    addOneProduct () {
+    addOneProduct (product) {
         var oldData = this.state.data;
-        var newData = {category: "Electronics", price: "$123", stocked: true, name: (new Date) - 0};
-        oldData.push(newData);
+        var newData = {category: "Electronics", price: "$123", stocked: true, name: ((new Date).getMilliseconds() + " New Product")};
+        oldData.push(product || newData);
         this.setState({data: oldData});
     }
 }
