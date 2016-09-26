@@ -25,7 +25,7 @@ export default class TodoTextInput extends React.Component{
                 className={this.props.className}
                 id={this.props.id}
                 placeholder={this.props.placeholder}
-                defaultValue={this.state.value}
+                value={this.state.value}
                 autoFocus={true}
                 onBlur={this.saveHandler}
                 onChange={this.changeHandler}
@@ -47,7 +47,7 @@ export default class TodoTextInput extends React.Component{
         });
     }
 
-    keyDownHandler(){
+    keyDownHandler(event){
         if (event.keyCode === ENTER_KEY_CODE) {
             this.saveHandler();
         }

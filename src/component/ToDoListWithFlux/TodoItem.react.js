@@ -12,6 +12,11 @@ export default class TodoItem extends React.Component{
         this.state = {
             isEditing: false
         };
+
+        this.toggleCompleteHandler = this.toggleCompleteHandler.bind(this);
+        this.doubleClickHandler = this.doubleClickHandler.bind(this);
+        this.removeHandler = this.removeHandler.bind(this);
+        this.saveHandler = this.saveHandler.bind(this);
     }
 
     render(){
@@ -22,11 +27,47 @@ export default class TodoItem extends React.Component{
             input =
                 <TodoTextInput
                     className="edit"
-                    onSave={this._save}
+                    onSave={this.saveHandler}
                     value={todo.text}
                 />;
         }
+        var liClass="";
+        if(todo.complete){
+            liClass += " completed";
+        }
+        if(this.state.isEditing){
+            liClass += " editing";
+        }
+        return (
+            <li className={liClass} key={todo.id}>
+                <div className="view">
+                    <input className="toggle" type="checkbox" checked={todo.complete}
+                           onChange={this.toggleCompleteHandler} />
+                    <label onDoubleClick={this.doubleClickHandler}>
+                        {todo.text}
+                    </label>
+                    <button className="destroy" onClick={this.removeHandler}></button>
+                </div>
+                {input}
+            </li>
+        );
+    }
 
+    toggleCompleteHandler(){
+        TodoAction.toggleComplete(this.props.todo);
+    }
+
+    doubleClickHandler(){
+        this.setState({isEditing: true});
+    }
+
+    removeHandler(){
+        TodoAction.remove(this.props.todo.id);
+    }
+
+    saveHandler(text){
+        TodoAction.updateText(this.props.todo.id, text);
+        this.setState({isEditing: false});
     }
 }
 
