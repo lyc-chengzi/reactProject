@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var routesConfig = require('./server/routes/routes-config');
 
 var app = express();
-console.log(__dirname);
 
 // view engine setup
 app.set('views', path.join(__dirname, './server/views'));
@@ -23,6 +22,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'src/pages')));
 
 //初始化路由配置
 routesConfig.initRoutes(app);

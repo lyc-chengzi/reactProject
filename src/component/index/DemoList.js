@@ -7,19 +7,13 @@ import Demo from './Demo';
 export default class DemoList extends React.Component{
     constructor(props){
         super(props);
-        let demoList = [{
-            "id": "demo1",
-            "url": "src/pages/demo1/demo1.html",
-            "text": "demo1 - 基本用法"
-        }, {
-            "id": "demo2",
-            "url": "src/pages/demo2/demo2.html",
-            "text": "demo2 - Flux基本使用"
-        }];
-        this.state = {demoList: demoList};
+        this.state = {demoList: []};
     }
 
     render() {
+        if(!this.state.demoList){
+            return null;
+        }
         var demoNode = this.state.demoList.map(function (demo) {
             return (
                 <Demo key={demo.id} url={demo.url} text={demo.text}/>
@@ -35,5 +29,12 @@ export default class DemoList extends React.Component{
                 </div>
             </div>
         );
+    }
+
+    componentDidMount(){
+        var _this = this;
+        $.get('/react?env=express', function(data){
+            _this.setState({demoList: data.data});
+        }, 'json');
     }
 }
