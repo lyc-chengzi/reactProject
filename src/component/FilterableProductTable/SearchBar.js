@@ -1,9 +1,11 @@
 import React from 'react';
+import action from '../../flux/actions/ProductAction';
 
 export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        this.filterNameChangeHandler = this.filterNameChangeHandler.bind(this);
+        this.onlyStockChangeHandler = this.onlyStockChangeHandler.bind(this);
     }
 
     render() {
@@ -12,17 +14,21 @@ export default class SearchBar extends React.Component {
                 <input type="text" placeholder="input product name"
                        ref="filterTextInput"
                        value={this.props.filterName}
-                       onChange={this.handleChange}/><br/>
+                       onChange={this.filterNameChangeHandler}/><br/>
                 <input id="FPT_SearchBar_in_stock" type="checkbox"
                        ref="inputOnlyStock"
                        checked={this.props.onlyStock}
-                       onChange={this.handleChange}/>
+                       onChange={this.onlyStockChangeHandler}/>
                 <label htmlFor="FPT_SearchBar_in_stock">only show product in stock</label>
             </form>
         );
     }
 
-    handleChange() {
-        this.props.onSearchChange(this.refs.filterTextInput.value, this.refs.inputOnlyStock.checked);
+    filterNameChangeHandler(){
+        action.setFilterName(this.refs.filterTextInput.value);
+    }
+
+    onlyStockChangeHandler(){
+        action.toggleOnlyStock();
     }
 }
