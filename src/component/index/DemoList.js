@@ -33,7 +33,7 @@ export default class DemoList extends React.Component{
 
     componentDidMount(){
         var _this = this;
-        $.get('/react?env=express', function(data){
+        $.get('/reactapi/demoList', function(data){
             _this.setState({demoList: data.data});
         }, 'json');
     }
