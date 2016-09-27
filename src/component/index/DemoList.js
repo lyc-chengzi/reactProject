@@ -7,7 +7,7 @@ import Demo from './Demo';
 export default class DemoList extends React.Component{
     constructor(props){
         super(props);
-        this.demoList = [{
+        let demoList = [{
             "id": "demo1",
             "url": "src/pages/demo1/demo1.html",
             "text": "demo1 - 基本用法"
@@ -15,15 +15,12 @@ export default class DemoList extends React.Component{
             "id": "demo2",
             "url": "src/pages/demo2/demo2.html",
             "text": "demo2 - Flux基本使用"
-        }, {
-            "id": "demo3",
-            "url": "src/pages/demo3/demo3.html",
-            "text": "demo3 - 绑定事件"
         }];
+        this.state = {demoList: demoList};
     }
 
     render() {
-        var demoNode = this.demoList.map(function (demo) {
+        var demoNode = this.state.demoList.map(function (demo) {
             return (
                 <Demo key={demo.id} url={demo.url} text={demo.text}/>
             );

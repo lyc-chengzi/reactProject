@@ -8,7 +8,7 @@
     "dev": "set NODE_ENV=dev&& gulp --gulpfile gulpfile.babel.js",
     "dev-server": "set NODE_ENV=devServer&& gulp task_server --gulpfile gulpfile.babel.js",
     "start": "set NODE_ENV=production&& gulp task_production --gulpfile gulpfile.babel.js",
-    "start-express": "node ./server/bin/www"
+    "express": "set env=dev&& node ./server/bin/www"
   },
   "repository": {
     "type": "git",
