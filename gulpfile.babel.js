@@ -89,7 +89,7 @@ const task_webpackDevServer = (done) => {
 };
 
 const task_watch = () => {
-    gulp.watch(paths.sourcePath+'/**/*.js', {readDelay: 2000}, task_webpack);
+    gulp.watch(paths.sourcePath+'/**/*.js', {readDelay: 2000}, gulp.series(task_clean, task_webpack, task_copy));
 };
 
 export {task_clean, task_webpack, task_webpackDevServer, task_watch, task_copy};
