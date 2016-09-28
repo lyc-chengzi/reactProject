@@ -11,10 +11,11 @@ var pathToReactDom = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js
 console.log('~~~~~~~~~~~~~~~~load basic config file');
 module.exports = {
     entry: {
-        vendor: ["react", 'react-dom', 'lodash'],
+        vendor: ["react", 'react-dom', 'lodash', 'redux'],
         homepage: [path.join(app_src, 'pages/homepage/index.js')],
         demo1: [path.join(app_src, 'pages/demo1/index.js')],
-        demo2: [path.join(app_src, 'pages/demo2/index.js')]
+        demo2: [path.join(app_src, 'pages/demo2/index.js')],
+        demo3: [path.join(app_src, 'pages/demo3/index.js')]
     },
     output: {
         path: path.resolve(__dirname,'dist'),
