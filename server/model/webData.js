@@ -10,6 +10,10 @@ var webData = {
         "id": "demo2",
         "url": "/html/demo2.html",
         "text": "demo2 - Flux基本使用"
+    }, {
+        "id": "demo3",
+        "url": "/html/demo3.html",
+        "text": "demo3 - Redux基本使用"
     }]
 };
 
