@@ -15,7 +15,8 @@ module.exports = {
         homepage: [path.join(app_src, 'pages/homepage/index.js')],
         demo1: [path.join(app_src, 'pages/demo1/index.js')],
         demo2: [path.join(app_src, 'pages/demo2/index.js')],
-        demo3: [path.join(app_src, 'pages/demo3/index.js')]
+        demo3: [path.join(app_src, 'pages/demo3/index.js')],
+        demo4: [path.join(app_src, 'pages/demo4/index.js')]
     },
     output: {
         path: path.resolve(__dirname,'dist'),

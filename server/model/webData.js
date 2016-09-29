@@ -14,6 +14,10 @@ var webData = {
         "id": "demo3",
         "url": "/html/demo3.html",
         "text": "demo3 - Redux基本使用"
+    }, {
+        "id": "demo4",
+        "url": "/html/demo4.html",
+        "text": "demo4 - Redux ToDoMVC"
     }]
 };
 
