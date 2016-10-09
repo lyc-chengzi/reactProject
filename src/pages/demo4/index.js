@@ -8,7 +8,11 @@ import { createStore } from 'redux'
 import todoApp from '../../component/TodoListWithRedux/reducers'
 import App from '../../component/TodoListWithRedux/components/App'
 
-let store = createStore(todoApp)
+let store = createStore(todoApp);
+
+store.subscribe(function(){
+    console.log(store.getState());
+});
 
 var app = render(
     <Provider store={store}>
