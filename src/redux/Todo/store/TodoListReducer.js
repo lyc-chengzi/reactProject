@@ -2,7 +2,7 @@
  * Created by liuyc14 on 2016/9/29.
  */
 
-import TodoConstant from './TodoConstant';
+import TodoConstant from '../action/TodoConstant';
 
 /**
  * 添加一个代办事项
@@ -23,8 +23,8 @@ const create = (text) => {
  * @param 要更新的属性
  */
 const update = (todos, id, updateOptions) => {
-    var todo = _.find(todos, (todo) => {todo.id==id});
-    _.assign({}, todo, updateOptions || {});
+    var todo = _.find(todos, (o) => o.id==id);
+    _.assign(todo || {}, updateOptions || {});
 };
 
 /**
@@ -34,7 +34,7 @@ const update = (todos, id, updateOptions) => {
 const updateAll = (todos, updates) => {
     for (let i = 0; i< todos.length; i++){
         var todo = todos[i];
-        _.assign({}, todo, updates);
+        _.assign(todo || {}, updates);
     }
 };
 
