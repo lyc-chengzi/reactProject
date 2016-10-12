@@ -1,11 +1,11 @@
 /**
  * Created by liuyc14 on 2016/9/28.
  */
-import todo from '../../redux/Todo/TodoReducer';
-import action from '../../redux/Todo/TodoAction';
+import todo from '../../redux/Todo/store/TodoReducer';
+import action from '../../redux/Todo/action/TodoAction';
 import city from '../../redux/CityReducer';
 import counter from '../../redux/CounterReducer';
-import {TodoListReducer} from '../../redux/Todo/TodoListReducer';
+import {TodoListReducer} from '../../redux/Todo/store/TodoListReducer';
 import * as redux from 'redux';
 
 /*
