@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleAllComplete: function(){
-            dispatch(action.toggleCompleteAll());
+        toggleAllComplete: function(complete){
+            dispatch(action.completeAll(complete));
         }
     };
 };

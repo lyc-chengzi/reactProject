@@ -2,8 +2,8 @@
  * Created by liuyc14 on 2016/9/26.
  */
 import React from 'react';
-import TodoItem from '../components/TodoItem.react';
-//import TodoItem from '../containers/TodoItem.react.redux';
+//import TodoItem from '../components/TodoItem.react';
+import TodoItem from '../containers/TodoItem.react.redux';
 
 export default class TodoBody extends React.Component{
     constructor(props){
@@ -33,8 +33,8 @@ export default class TodoBody extends React.Component{
         );
     }
 
-    toggleAllCompleteHandler(){
-        this.props.toggleAllComplete();
+    toggleAllCompleteHandler(e){
+        this.props.toggleAllComplete(e.target.checked);
     }
 }
 

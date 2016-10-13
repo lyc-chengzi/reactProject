@@ -17,6 +17,15 @@ const create = (text) => {
     };
 };
 
+const copyTodoArray = (todos) => {
+    var l = todos.length;
+    var newTodo = [];
+    for(let i = 0; i < l; i++){
+        newTodo.push(todos[i]);
+    }
+    return newTodo;
+};
+
 /**
  * 更新一个代办事项
  * @param id
@@ -25,6 +34,7 @@ const create = (text) => {
 const update = (todos, id, updateOptions) => {
     var todo = _.find(todos, (o) => o.id==id);
     _.assign(todo || {}, updateOptions || {});
+    return copyTodoArray(todos);
 };
 
 /**
@@ -36,6 +46,8 @@ const updateAll = (todos, updates) => {
         var todo = todos[i];
         _.assign(todo || {}, updates);
     }
+    return copyTodoArray(todos);
+    //return Object.assign({})
 };
 
 /**
@@ -46,6 +58,7 @@ const remove = (todos, id) => {
     _.remove(todos, function(todo){
         return todo.id == id;
     });
+    return copyTodoArray(todos);
 };
 
 /**
@@ -55,6 +68,7 @@ const removeCompleted = (todos) => {
     _.remove(todos, function(todo){
         return todo.complete;
     });
+    return copyTodoArray(todos);
 };
 
 //是否所有都已经完成
@@ -81,37 +95,36 @@ function TodoListReducer(todos=[], action){
             break;
         case TodoConstant.TODO_TOGGLE_COMPLETE_ALL:
             if (areAllCompleted(todos)) {
-                updateAll(todos, {complete: false});
-                return todos;
+                return updateAll(todos, {complete: false});
             } else {
-                updateAll(todos, {complete: true});
-                return todos;
+                return updateAll(todos, {complete: true});
             }
             break;
+        case TodoConstant.TODO_COMPLETE_ALL:
+            return updateAll(todos, {complete: true});
+            break;
+        case TodoConstant.TODO_UNDO_COMPLETE_ALL:
+            return updateAll(todos, {complete: false});
+            break;
         case TodoConstant.TODO_UNDO_COMPLETE:
-            update(todos, action.id, {complete: false});
-            return todos;
+            return update(todos, action.id, {complete: false});
             break;
         case TodoConstant.TODO_COMPLETE:
-            update(todos, action.id, {complete: true});
-            return todos;
+            return update(todos, action.id, {complete: true});
             break;
         case TodoConstant.TODO_UPDATE_TEXT:
             text = action.text.trim();
             if (text !== '') {
-                update(todos, action.id, {text: text});
-                return todos;
+                return update(todos, action.id, {text: text});
             }else{
                 return todos;
             }
             break;
         case TodoConstant.TODO_DESTROY:
-            remove(todos, action.id);
-            return todos;
+            return remove(todos, action.id);
             break;
         case TodoConstant.TODO_DESTROY_COMPLETED:
-            removeCompleted(todos);
-            return todos;
+            return removeCompleted(todos);
             break;
         default:
             return todos;

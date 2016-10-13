@@ -19,4 +19,6 @@ const mapDispatchToProps = function(dispatch, ownProps){
     };
 };
 
-export default connect(null, mapDispatchToProps)(item);
+export default connect((state) => ({
+    todos: state.todos
+}), mapDispatchToProps)(item);

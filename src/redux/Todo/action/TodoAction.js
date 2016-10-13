@@ -46,7 +46,11 @@ var TodoAction  = {
             type: TodoConstant.TODO_TOGGLE_COMPLETE_ALL
         };
     },
-
+    completeAll: function(complete){
+        return {
+            type: complete ? TodoConstant.TODO_COMPLETE_ALL : TodoConstant.TODO_UNDO_COMPLETE_ALL
+        };
+    },
     /**
      * @param  {string} id
      */
