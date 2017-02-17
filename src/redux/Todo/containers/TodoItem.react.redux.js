@@ -20,5 +20,5 @@ const mapDispatchToProps = function(dispatch, ownProps){
 };
 
 export default connect((state) => ({
-    todos: state.todos
+    todoa: {}
 }), mapDispatchToProps)(item);
